@@ -7,6 +7,9 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
+  const [selectedTheme, setSelectedTheme] = useState('light');
+
+
 
   useEffect(() => {
     setData(Data);
@@ -30,6 +33,7 @@ const Dashboard = () => {
         label: "Data Alert Time",
         data: Object.values(LineData),
         borderColor: 'red',
+    
         backgroundColor: 'rgba(66, 153, 225, 0.2)',
         tension: 0.4,
         borderWidth: 2,
@@ -52,7 +56,7 @@ const Dashboard = () => {
     labels: truncatedLabels,
     datasets: [
       {
-        label: 'Data Alert Time',
+        label: 'Data Alert Signature',
         data: uniqueSignatures.map(sig => data.filter(item => item.alert.signature === sig).length),
         backgroundColor: '#34A'
       },
@@ -107,29 +111,29 @@ const Dashboard = () => {
       legend: {
         position: 'bottom',
         labels: {
-          color: 'white',
+          color: setSelectedTheme === 'dark' ? 'white' : 'black', // Set color based on theme
         },
       },
       title: {
         display: true,
         text: (ctx) => ctx.chart.data.datasets[0].label,
-        color: 'white',
+        color: setSelectedTheme === 'dark' ? 'white' : 'black', // Set color based on theme
       },
     },
     scales: {
       x: {
         ticks: {
-          color: 'white',
+          color: setSelectedTheme === 'light' ? 'white' : 'black', 
         },
       },
       y: {
         ticks: {
-          color: 'white',
+          color: setSelectedTheme === 'dark' ? 'white' : 'black', 
         },
       },
     },
   };
-
+  
   const chartOptionsWithoutScales = {
     ...chartOptions,
     scales: {},
