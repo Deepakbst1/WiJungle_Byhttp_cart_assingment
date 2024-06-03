@@ -21,7 +21,7 @@ export default function TemporaryDrawer() {
       >
         <div className="drawer-div">
           <Link to="/"><p className="link">Home</p></Link>
-          <Link to="/compare"><p className="link">Compare</p></Link>
+          <Link to="/Dashboard"><p className="link">Dashboard</p></Link>
           <DarkMode />
         </div>
       </Drawer>

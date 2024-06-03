@@ -3,12 +3,12 @@ import { Line, Bar, Pie, Doughnut } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 import { Data } from './data';
 
+
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend);
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [selectedTheme, setSelectedTheme] = useState('light');
-
 
 
   useEffect(() => {
@@ -120,18 +120,7 @@ const Dashboard = () => {
         color: setSelectedTheme === 'dark' ? 'white' : 'black', // Set color based on theme
       },
     },
-    scales: {
-      x: {
-        ticks: {
-          color: setSelectedTheme === 'light' ? 'white' : 'black', 
-        },
-      },
-      y: {
-        ticks: {
-          color: setSelectedTheme === 'dark' ? 'white' : 'black', 
-        },
-      },
-    },
+
   };
   
   const chartOptionsWithoutScales = {
